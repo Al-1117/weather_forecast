@@ -1,6 +1,8 @@
 import { Component } from "react";
+import './city.scss';
 
 class City extends Component{
+   
 
     state = {
         cities : [ 
@@ -53,20 +55,26 @@ class City extends Component{
                 longitude: 18.39
             },
         ]
+
+       
         // [this.city, this.setCity] = useState("Seleziona una città ")  
+    }
+
+    handleCityChange = (event) => {
+         this.props.sendCityName(event.target.value);
+         event.preventDefault();
+        console.log(event.target.value);
     }
    
 
     render(){
         return(
             <>
-            <div className="search">
-                <label> </label>
-                <select className='form-select' name="city" id="city">
-                    {this.state.cities.map((city) => <option key={city.id} value={city.name}>{city.name}</option>)}
+            <div className="col-4 search">
+                <select className='form-select' name="city" id="city" onChange={this.handleCityChange}>
+                    {this.state.cities.map((city) => <option key={city.id} value={city.name}>{city.name}  </option>)}
                 </select>
             </div>
-            {/* <Current city={city}/>; */}
             </>           
         )
     }

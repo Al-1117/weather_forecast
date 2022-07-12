@@ -6,7 +6,14 @@ import City from '../City/city';
 
 
 class Current extends Component{
+    state = {
+        city : "",
+    }
+    handleCityChange = (cityName) => {
+        this.setState({city : cityName})
+    }
     render(){
+        const {city} = this.state;
         return(
             <div className="row current">
                 <div className="col weather_cond" style={{}}>
@@ -37,15 +44,18 @@ class Current extends Component{
                     </ul>
                 
                 </div>
-                <div className="col-6">
-                    <City/>
+                <div className="city col-6">
+                    
+                    <City
+                        sendCityName = {this.handleCityChange}
+                    />
                 </div>
 
                
               
 
                 <div className="date_place col" style={{}}>
-                   <div><strong>{this.props.city}</strong></div>
+                    <div className='city_name'><h2>{city == '' ? 'Bergamo' : city}</h2></div>
                    <div>{this.props.dateTime}</div>
                    <div>Soleggiato</div>
                 </div>

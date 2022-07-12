@@ -55,9 +55,9 @@ class App extends React.Component {
           time = {this.state.current_weather.time}
           /> */}
         </div>
-      <div className='layover'>
+        <div className='layover'>
 
-      </div>
+        </div>
       </>
     )
   }
