@@ -39,12 +39,13 @@ class Current extends Component{
                     <ul>
                         <li>Vento</li>
                         <li>Direzione: {this.props.windDirection}</li>
-                        <li>Velocità: {this.props.windSpeed}</li>
+                        <li>Velocità: {this.props.windSpeed} km/h</li>
+                        <li>Elevazione: {this.props.elevation}</li>
                         
                     </ul>
                 
                 </div>
-                <div className="city col-6">
+                <div className="city col-5">
                     
                     <City
                         sendCityName = {this.handleCityChange}
@@ -56,7 +57,8 @@ class Current extends Component{
 
                 <div className="date_place col" style={{}}>
                     <div className='city_name'><h2>{city == '' ? 'Bergamo' : city}</h2></div>
-                   <div>{this.props.dateTime}</div>
+                   <div>{this.props.dateTime}{
+                   }</div>
                    <div>Soleggiato</div>
                 </div>
                 

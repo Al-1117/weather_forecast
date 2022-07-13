@@ -1,6 +1,9 @@
 import './App.css';
 import React from 'react';
 import Current from '../Current/current';
+import cities from '../assets/cities.json'
+import City from '../City/city';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +11,32 @@ class App extends React.Component {
       data: {},
       current_weather : {},
       isLoaded: false,
-      error: null
-
-      
+      error: null,
+      city : "",      
     }
   }
 
   componentDidMount(){
+    var city = cities.map(city =>(
+      <City
+        id={city.id}
+        name={city.name}
+        longitude={city.longitude}
+        latitude={city.latitude}
+      />
+      )
+    );
+
+
+      console.log(city);
+      //var a = cities.filter(city23 => city23.id == city.props.id)
+
+      //console.log(a);
+      // this.setState({cards});
+    
+
+  
+
     fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&current_weather=true")
     .then(res => res.json())
     .then(
@@ -35,6 +57,15 @@ class App extends React.Component {
     );
   }
 
+  
+    
+  
+
+  // handleDelete = cityId =>{
+  //   const cities = this.cities.filter(city => city.id !== cityId)
+  //   this.setState({cities});
+  // }
+
   render(){
     return(
       <>
@@ -46,7 +77,9 @@ class App extends React.Component {
             temperature = {this.state.current_weather.temperature}
             weatherCode = {this.state.current_weather.weathercode}
             windDirection = {this.state.current_weather.winddirection}
+            windSpeed = {this.state.current_weather.windspeed}
             dateTime = {this.state.current_weather.time}
+            elevation = {this.state.data.elevation}
 
           />
 
