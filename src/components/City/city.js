@@ -6,7 +6,6 @@ class City extends Component{
    
 
     state = {
-        n : "",
         cities : [ 
             {
                 id: 0,
@@ -57,24 +56,23 @@ class City extends Component{
                 longitude: 18.39
             },
         ]
-
-       
-        // [this.city, this.setCity] = useState("Seleziona una città ")  
+     
     }
 
     handleCityChange = (event) => {
-         this.props.sendCityName(event.target.value);
-         event.preventDefault();
-        console.log(event.target.value);
-        this.setState({name : event.target.value})
-    }
+        // Getting the city Obj selected by user
+        const selectedCity = this.state.cities.find((city) => city.name === event.target.value)
+        // I send the selected city to Current Component
+        this.props.sendCity(selectedCity);
+        event.preventDefault();
+   }
    
 
     render(){
         return(
             <>
             <div className="col-4 search">
-                <select className='form-select' name="city" id="city" onChange={this.handleCityChange}>
+                <select className='form-select dark_mode' name="city" id="city" onChange={this.handleCityChange}>
                     {this.state.cities.map((city) => 
                     <option key={city.id} value={city.name}>{city.name}  </option>)}
                 </select>

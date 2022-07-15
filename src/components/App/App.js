@@ -2,8 +2,7 @@ import './App.css';
 import React from 'react';
 import Current from '../Current/current';
 import cities from '../assets/cities.json'
-import City from '../City/city';
-
+import getForecast from '../ajax/getForecast';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -12,33 +11,21 @@ class App extends React.Component {
       current_weather : {},
       isLoaded: false,
       error: null,
-      city : "",      
+      selectedCity : {}
     }
   }
 
+
+
   componentDidMount(){
-    var city = cities.map(city =>(
-      <City
-        id={city.id}
-        name={city.name}
-        longitude={city.longitude}
-        latitude={city.latitude}
-      />
-      )
-    );
-
-
-      console.log(city);
-      //var a = cities.filter(city23 => city23.id == city.props.id)
-
-      //console.log(a);
-      // this.setState({cards});
-    
-
-  
-
-    fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&current_weather=true")
-    .then(res => res.json())
+    const defaultCity = {
+      id: 0,
+      name: 'Bergamo',
+      latitude: 45.69, 
+      longitude:9.67
+    }
+    this.setState({selectedCity : defaultCity});
+    getForecast(defaultCity)
     .then(
       (result) => {
         this.setState({
@@ -54,7 +41,29 @@ class App extends React.Component {
           error
         });
       }
-    );
+    )
+  }
+
+  onCityChanged = (cityObj) => {
+    this.setState({selectedCity : cityObj});
+    getForecast(cityObj)
+    .then(
+      (result) => {
+        this.setState({
+          data : result,
+          current_weather : result.current_weather
+        });
+        //console.log(result);
+      },
+
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+
   }
 
   
@@ -67,6 +76,7 @@ class App extends React.Component {
   // }
 
   render(){
+    console.log();
     return(
       <>
         <div className='container'>
@@ -80,6 +90,7 @@ class App extends React.Component {
             windSpeed = {this.state.current_weather.windspeed}
             dateTime = {this.state.current_weather.time}
             elevation = {this.state.data.elevation}
+            sendCurrentCity = {this.onCityChanged}
 
           />
 

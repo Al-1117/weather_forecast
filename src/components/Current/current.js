@@ -3,14 +3,20 @@ import './current.scss';
 import{BsSun } from 'react-icons/bs'
 import{BsCloudSun } from 'react-icons/bs'
 import City from '../City/city';
+import Moment from 'react-moment';
+import * as moment from 'moment'
+
+
+
 
 
 class Current extends Component{
     state = {
-        city : "",
+        city : {},
     }
-    handleCityChange = (cityName) => {
-        this.setState({city : cityName})
+    handleCityChange = (cityObj) => {
+        this.setState({city : cityObj});
+        this.props.sendCurrentCity(cityObj);
     }
     render(){
         const {city} = this.state;
@@ -18,7 +24,7 @@ class Current extends Component{
             <div className="row current">
                 <div className="col weather_cond" style={{}}>
 
-                    {   this.props.weatherCode === 3 ? 
+                    {   this.props.weatherCode !== 0 ? 
                         (
                             <div>
                                 <BsCloudSun />
@@ -48,7 +54,7 @@ class Current extends Component{
                 <div className="city col-5">
                     
                     <City
-                        sendCityName = {this.handleCityChange}
+                        sendCity = {this.handleCityChange}
                     />
                 </div>
 
@@ -56,9 +62,10 @@ class Current extends Component{
               
 
                 <div className="date_place col" style={{}}>
-                    <div className='city_name'><h2>{city == '' ? 'Bergamo' : city}</h2></div>
-                   <div>{this.props.dateTime}{
-                   }</div>
+                    <div className='city_name'><h2>{Object.keys(city).length === 0 ? city.name = 'Bergamo' : city.name}</h2></div>
+                   {/* <div><Moment parse="DD-MM HH:mm">{this.props.dateTime}</Moment> */}
+                    <div>{"Giovedì "}{moment(this.props.dateTime).format("DD MMM")}
+                   </div>
                    <div>Soleggiato</div>
                 </div>
                 
