@@ -1,10 +1,9 @@
 .current{
   padding: 1rem;
-  //display: flex;
-  border: 2px solid  #1a1a1a;;
+  display: flex;
+  border: 2px solid  #1a1a1a;
   border-radius: 7px;
   background-color:#1a1a1a;
-  //background-color:#1a1a1a;
   //box-shadow: 5px 5px 10px 0px #1a1a1a;
   //background-color: transparent;
   .weather_cond{
@@ -18,9 +17,9 @@
   }
 
   .date_place{
-    .city_name{
-      
-    }
+      .city_name{
+        
+      }
   }
 
  

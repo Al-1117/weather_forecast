@@ -3,6 +3,8 @@ import React from 'react';
 import Current from '../Current/current';
 import cities from '../assets/cities.json'
 import getForecast from '../ajax/getForecast';
+import Daily from '../Daily/daily';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,8 +16,6 @@ class App extends React.Component {
       selectedCity : {}
     }
   }
-
-
 
   componentDidMount(){
     const defaultCity = {
@@ -30,7 +30,8 @@ class App extends React.Component {
       (result) => {
         this.setState({
           data : result,
-          current_weather : result.current_weather
+          current_weather : result.current_weather,
+          daily_weather : result.daily
         });
         console.log(result);
       },
@@ -51,7 +52,8 @@ class App extends React.Component {
       (result) => {
         this.setState({
           data : result,
-          current_weather : result.current_weather
+          current_weather : result.current_weather,
+          daily_weather : result.daily
         });
         //console.log(result);
       },
@@ -66,39 +68,44 @@ class App extends React.Component {
 
   }
 
-  
-    
-  
-
-  // handleDelete = cityId =>{
-  //   const cities = this.cities.filter(city => city.id !== cityId)
-  //   this.setState({cities});
-  // }
-
   render(){
-    console.log();
     return(
       <>
         <div className='container'>
-          {/* <div className='row'>
+          <div className="row">
 
-          </div> */}
-          <Current 
-            temperature = {this.state.current_weather.temperature}
-            weatherCode = {this.state.current_weather.weathercode}
-            windDirection = {this.state.current_weather.winddirection}
-            windSpeed = {this.state.current_weather.windspeed}
-            dateTime = {this.state.current_weather.time}
-            elevation = {this.state.data.elevation}
-            sendCurrentCity = {this.onCityChanged}
+            <Current 
+              temperature = {this.state.current_weather.temperature}
+              weatherCode = {this.state.current_weather.weathercode}
+              windDirection = {this.state.current_weather.winddirection}
+              windSpeed = {this.state.current_weather.windspeed}
+              dateTime = {this.state.current_weather.time}
+              elevation = {this.state.data.elevation}
+              dailyWeather = {this.state.daily_weather}
 
-          />
+              sendCurrentCity = {this.onCityChanged}
+            />
+          </div>
 
-          {/* <Card
-          longitude = {this.state.cards.longitude}
-          time = {this.state.current_weather.time}
-          /> */}
+          <div className='divider'>
+
+          </div>
+
+          <div className='row'>
+            <Daily
+              // dailyWeather = {this.state.daily_weather}
+            />
+            <Daily/>
+            <Daily/>
+            <Daily/>
+            <Daily/>
+            <Daily/>
+            <Daily/>
+
+          </div>
+
         </div>
+
         <div className='layover'>
 
         </div>

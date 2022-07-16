@@ -36,3 +36,46 @@ img{
 .container{
   padding: 2rem;
 }
+
+
+/* CUSTOM INPUTS */
+ input, button {
+    margin: 10px 0;
+    padding: 5px;
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    margin: 5px;
+  }
+    
+  button{
+  color: #ffffff;
+  font-family: 'Oxygen', sans-serif;
+  background-color: black;
+  width: 100px;
+  border: 1px solid #ffffff;
+  }
+    
+  button:hover{
+    color: black;
+    font-family: 'Oxygen', sans-serif;
+    background-color: #ffffff;
+    width: 100px;
+  }
+    
+   input:focus{
+     border: none;
+   }
+/* CUSTOM SELECT */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* APP */
+
+.divider{
+  height: 100px;
+}

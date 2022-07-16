@@ -33,15 +33,15 @@ class City extends Component{
             },
             {
                 id: 4,
-                name: 'Koln',
+                name: 'Köln',
                 latitude: 50.94, 
                 longitude:6.94
             },
             {
                 id: 5,
-                name: 'Moulins',
-                latitude: 46.56, 
-                longitude:3.32
+                name: 'Paris',
+                latitude: 48.86, 
+                longitude:2.34
             },
             {
                 id: 6,
@@ -51,6 +51,12 @@ class City extends Component{
             },
             {
                 id: 7,
+                name: 'Barcelona',
+                latitude: 41.40, 
+                longitude:2.16
+            },
+            {
+                id: 8,
                 name: 'Cape Town',
                 latitude: -33.92, 
                 longitude: 18.39

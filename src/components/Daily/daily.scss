@@ -1,0 +1,48 @@
+
+    
+
+.daily{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+    margin: 0.3rem;
+    border: 2px solid  #1a1a1a;
+    border-radius: 7px;
+    background-color:#1a1a1a;
+    min-height: 200px;
+    font-size: 20px;
+
+    .day{
+
+    }
+
+    .condition{
+        font-size: 3rem;
+        //color: #ffe168;
+        
+    }
+
+    .temperature{
+        display: flex;
+        justify-content: center;
+
+        .degree{
+            margin: 0 5px;
+            &.max{
+                span{
+                    padding-left: 2px;
+                    color: darkorange;
+                }
+            }
+            &.min{
+                span{
+                    padding-left: 2px;
+                    color: lightskyblue;
+                }
+
+            }
+
+        }
+    }
+}
