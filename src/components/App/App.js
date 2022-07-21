@@ -18,8 +18,7 @@ class App extends React.Component {
       temperatureMax : 0,
       temperatureMin : 0,
       dailyDateTime : '',      
-
-
+      dailyWeatherCode : '',      
     }
   }
 
@@ -41,6 +40,7 @@ class App extends React.Component {
           temperatureMax : result.daily.temperature_2m_max,
           temperatureMin : result.daily.temperature_2m_min,
           dailyDateTime : result.daily.time,
+          dailyWeatherCode : result.daily.weathercode,
         });
         //console.log(result);
         //console.log(this.state.daily_weather);
@@ -62,6 +62,7 @@ class App extends React.Component {
       temperatureMax = {this.state.temperatureMax[index]}
       temperatureMin = {this.state.temperatureMin[index]}
       dailyDateTime = {this.state.dailyDateTime[index]}
+      dailyWeatherCode = {this.state.dailyWeatherCode[index]}
    />
   }
  
@@ -76,8 +77,8 @@ class App extends React.Component {
           daily_weather : result.daily,
           temperatureMax : result.daily.temperature_2m_max,
           temperatureMin : result.daily.temperature_2m_min,
-          dailyDateTime : result.daily.time
-
+          dailyDateTime : result.daily.time,
+          dailyWeatherCode : result.daily.weathercode
         });
         console.log(result);
       },
