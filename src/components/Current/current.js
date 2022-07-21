@@ -18,15 +18,15 @@ class Current extends Component{
         this.props.sendCurrentCity(cityObj);
     }
     render(){
-        let temperatureMax = this.props.dailyWeather;
-        for (let index = 0; index < this.props.dailyWeather.length; index++) {
-            const element = this.props.dailyWeather[index];
+        // let temperatureMax = this.props.dailyWeather;
+        // for (let index = 0; index < this.props.dailyWeather.length; index++) {
+        //     const element = this.props.dailyWeather[index];
 
-            console.log(element);
+        //     console.log(element);
             
-        }
-    const temperatureMin = this.props.dailyWeather;
-    console.log(temperatureMax);
+        // }
+    //const temperatureMin = this.props.dailyWeather;
+    //console.log(temperatureMax);
         const {city} = this.state;
         return(
             <div className="current">
@@ -73,9 +73,9 @@ class Current extends Component{
                     <div className='city_name'><h2>{Object.keys(city).length === 0 ? city.name = 'Bergamo' : city.name}</h2></div>
                    {/* <div><Moment parse="DD-MM HH:mm">{this.props.dateTime}</Moment> */}
                     {/* <div>{moment(this.props.dateTime).format("DD MM YYYY")} */}
-                    <div>{moment.unix(this.props.dateTime).format('dddd, MMM YYYY h:mm:ss A')}
+                    <div>{moment.unix(this.props.dateTime).format('dddd DD MMMM YYYY')}
                    </div>
-                   <div>Soleggiato</div>
+                   <div> Weather code: {this.props.weatherCode} Soleggiato</div>
                 </div>
                 
             </div>

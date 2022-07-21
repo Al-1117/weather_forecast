@@ -13,7 +13,13 @@ class App extends React.Component {
       current_weather : {},
       isLoaded: false,
       error: null,
-      selectedCity : {}
+      selectedCity : {},
+      daily_weather : {},
+      temperatureMax : 0,
+      temperatureMin : 0,
+      dailyDateTime : '',      
+
+
     }
   }
 
@@ -31,9 +37,14 @@ class App extends React.Component {
         this.setState({
           data : result,
           current_weather : result.current_weather,
-          daily_weather : result.daily
+          daily_weather : result.daily,
+          temperatureMax : result.daily.temperature_2m_max,
+          temperatureMin : result.daily.temperature_2m_min,
+          dailyDateTime : result.daily.time,
         });
-        console.log(result);
+        //console.log(result);
+        //console.log(this.state.daily_weather);
+
       },
 
       (error) => {
@@ -43,8 +54,17 @@ class App extends React.Component {
         });
       }
     )
+
   }
 
+   test = (index)=>{
+    return <Daily
+      temperatureMax = {this.state.temperatureMax[index]}
+      temperatureMin = {this.state.temperatureMin[index]}
+      dailyDateTime = {this.state.dailyDateTime[index]}
+   />
+  }
+ 
   onCityChanged = (cityObj) => {
     this.setState({selectedCity : cityObj});
     getForecast(cityObj)
@@ -53,9 +73,13 @@ class App extends React.Component {
         this.setState({
           data : result,
           current_weather : result.current_weather,
-          daily_weather : result.daily
+          daily_weather : result.daily,
+          temperatureMax : result.daily.temperature_2m_max,
+          temperatureMin : result.daily.temperature_2m_min,
+          dailyDateTime : result.daily.time
+
         });
-        //console.log(result);
+        console.log(result);
       },
 
       (error) => {
@@ -82,7 +106,6 @@ class App extends React.Component {
               dateTime = {this.state.current_weather.time}
               elevation = {this.state.data.elevation}
               dailyWeather = {this.state.daily_weather}
-
               sendCurrentCity = {this.onCityChanged}
             />
           </div>
@@ -92,16 +115,14 @@ class App extends React.Component {
           </div>
 
           <div className='row'>
-            <Daily
-              // dailyWeather = {this.state.daily_weather}
-            />
-            <Daily/>
-            <Daily/>
-            <Daily/>
-            <Daily/>
-            <Daily/>
-            <Daily/>
 
+           {this.test(0)}
+           {this.test(1)}
+           {this.test(2)}
+           {this.test(3)}
+           {this.test(4)}
+           {this.test(5)}
+           {this.test(6)}
           </div>
 
         </div>

@@ -57,6 +57,12 @@ class City extends Component{
             },
             {
                 id: 8,
+                name: 'London',
+                latitude: 51.51, 
+                longitude:-0.12
+            },
+            {
+                id: 9,
                 name: 'Cape Town',
                 latitude: -33.92, 
                 longitude: 18.39
