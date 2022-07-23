@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import Current from '../Current/current';
-import cities from '../assets/cities.json'
 import getForecast from '../ajax/getForecast';
 import Daily from '../Daily/daily';
 
@@ -57,7 +56,7 @@ class App extends React.Component {
 
   }
 
-   test = (index)=>{
+   renderDailyData = (index)=>{
     return <Daily
       temperatureMax = {this.state.temperatureMax[index]}
       temperatureMin = {this.state.temperatureMin[index]}
@@ -117,13 +116,13 @@ class App extends React.Component {
 
           <div className='row'>
 
-           {this.test(0)}
-           {this.test(1)}
-           {this.test(2)}
-           {this.test(3)}
-           {this.test(4)}
-           {this.test(5)}
-           {this.test(6)}
+           {this.renderDailyData(0)}
+           {this.renderDailyData(1)}
+           {this.renderDailyData(2)}
+           {this.renderDailyData(3)}
+           {this.renderDailyData(4)}
+           {this.renderDailyData(5)}
+           {this.renderDailyData(6)}
           </div>
 
         </div>
